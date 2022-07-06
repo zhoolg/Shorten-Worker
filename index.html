@@ -69,17 +69,17 @@
 </head>
 <body>
   <div class="card">
-    <h5 class="card-header">🎁 Shorten your URLs !</h5>
+    <h5 class="card-header">🎁 缩短您的链接 !</h5>
     <div class="card-body">
-      <h5 class="card-title">Please enter the long URL to be shortened :</h5>
+      <h5 class="card-title">请输入要缩短的长网址：</h5>
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Example: https://example.com/" id="text">
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button" onclick='shorturl()' id="searchbtn">Shorten it</button>
+          <button class="btn btn-primary" type="button" onclick='shorturl()' id="searchbtn">缩短</button>
         </div>
       </div>    
       <div class="card-text">
-        <a href="https://github.com/xyTom/Url-Shorten-Worker/" target="_self">Fork me on GitHub</a>
+        <a href="https://github.com/zhoolg/Shorten-Worker/" target="_self">Fork me on GitHub</a>
       </div>
       <p id="notice"></p>             
     </div>
@@ -88,14 +88,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Result</h5>
+          <h5 class="modal-title" id="exampleModalLabel">结果</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id="result">No result</div>
+        <div class="modal-body" id="result">没有结果</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick='copyurl("result")' data-toggle="popover" data-placement="bottom" data-content="Copied!">Copy</button>
+          <button type="button" class="btn btn-primary" onclick='copyurl("result")' data-toggle="popover" data-placement="bottom" data-content="Copied!">复制</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>    
         </div>
       </div>
