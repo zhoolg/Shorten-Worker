@@ -228,26 +228,26 @@
       document.getElementById("searchbtn").disabled = true;
       document.getElementById("searchbtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
 
-      fetch('/shorten', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: document.querySelector("#text").value })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (myJson) {
-        res = myJson;
-        document.getElementById("searchbtn").disabled = false;
-        document.getElementById("searchbtn").innerHTML = '缩短';
-        if (res.key !== "") {
-          document.getElementById("result").innerHTML = window.location.host + '/' + res.key;
-          $('#exampleModal').modal('show');
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', window.location.pathname, true);
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var res = JSON.parse(xhr.responseText);
+          document.getElementById("searchbtn").disabled = false;
+          document.getElementById("searchbtn").innerHTML = '缩短';
+          if (res.key !== "") {
+            document.getElementById("result").innerHTML = window.location.host + '/' + res.key;
+            $('#exampleModal').modal('show');
+          }
+        } else if (xhr.readyState === 4) {
+          alert("Unknown error. Please retry!");
+          console.log(xhr.statusText);
+          document.getElementById("searchbtn").disabled = false;
+          document.getElementById("searchbtn").innerHTML = '缩短';
         }
-      }).catch(function (err) {
-        alert("Unknown error. Please retry!");
-        console.log(err);
-        document.getElementById("searchbtn").disabled = false;
-        document.getElementById("searchbtn").innerHTML = '缩短';
-      });
+      };
+      xhr.send(JSON.stringify({ url: document.querySelector("#text").value }));
     }
 
     function copyurl(id, attr) {
