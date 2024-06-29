@@ -330,7 +330,7 @@
             document.getElementById("searchbtn").innerHTML = "缩短";
             if (res.key !== "") {
               document.getElementById("result").innerHTML =
-                window.location.host + "/" + res.key;
+                window.location.host + res.key;
               $("#exampleModal").modal("show");
             }
           })
